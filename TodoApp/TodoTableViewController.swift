@@ -11,5 +11,9 @@ import UIKit
 class TodoTableViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let title = UILabel(frame: CGRect(x: 10, y: 20, width: 310, height: 44))
+        title.text = "ToDoリスト"
+        self.view.addSubview(title)
     }
 }
