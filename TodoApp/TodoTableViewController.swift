@@ -12,8 +12,13 @@ class TodoTableViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let header = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 64))
+        header.image = UIImage(named: "header")
+        
         let title = UILabel(frame: CGRect(x: 10, y: 20, width: 310, height: 44))
         title.text = "ToDoリスト"
-        self.view.addSubview(title)
+        header.addSubview(title)
+        
+        self.view.addSubview(header)
     }
 }
