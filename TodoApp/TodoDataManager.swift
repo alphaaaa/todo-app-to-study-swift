@@ -23,4 +23,13 @@ class TodoDataManager {
     class func validate(todo: TODO!) -> Bool {
         return todo != nil && todo.title != ""
     }
+    
+    // ToDoリストの内容を生成
+    func create(todo: TODO!) -> Bool {
+        if TodoDataManager.validate(todo) {
+            self.todoList.append(todo)
+            return true
+        }
+        return false
+    }
 }
