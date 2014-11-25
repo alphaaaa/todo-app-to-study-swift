@@ -13,8 +13,17 @@ struct TODO {
 class TodoDataManager {
     var todoList: [TODO]
     
+    // Computed Property
+    // そのプロパティに値を代入する時と値を取り出すときに実行される処理
+    // 下記のようにget,set節が両方省略されている場合は get の処理となる
     var size : Int {
         return todoList.count
+    }
+    
+    // TodoDataManagerに[]を使ってアクセスされた時の振る舞い
+    // subscriptを実装していればどんなクラスや構造体であっても[]による振る舞いを追加することができる
+    subscript(index: Int) -> TODO {
+        return todoList[index]
     }
     
     // let data = TodoDataManager() で init() が実行される
