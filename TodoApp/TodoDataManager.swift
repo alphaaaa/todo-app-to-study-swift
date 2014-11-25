@@ -13,6 +13,10 @@ struct TODO {
 class TodoDataManager {
     var todoList: [TODO]
     
+    var size : Int {
+        return todoList.count
+    }
+    
     // let data = TodoDataManager() で init() が実行される
     init() {
         self.todoList = []
