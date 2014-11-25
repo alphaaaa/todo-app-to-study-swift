@@ -32,4 +32,20 @@ class TodoDataManager {
         }
         return false
     }
+    
+    // ToDoリストの内容を更新
+    func update(todo: TODO!, at index: Int) -> Bool {
+        if index >= self.todoList.count {
+            return false
+        }
+        
+        if TodoDataManager.validate(todo) {
+            todoList[index] = todo
+            self.save()
+            return true;
+        }
+        
+        return false
+    }
+    
 }
