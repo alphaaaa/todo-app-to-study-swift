@@ -42,9 +42,18 @@ class TodoDataManager {
             self.todoList = []
         }
     }
+    
+    // ToDoデータを保存する
+    func save() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let data = self.todoList.map {
+            todo in
+            todo.title
+        }
+        defaults.setObject(data, forKey: self.STORE_KEY)
     }
     
-    // TODOが正しい書式であるか判定する
+    // ToDoが正しい書式であるか判定する
     // クラスメソッドとして定義し、クラス名から直接呼び出すのでインスタンスに依存することなく使える
     class func validate(todo: TODO!) -> Bool {
         return todo != nil && todo.title != ""
