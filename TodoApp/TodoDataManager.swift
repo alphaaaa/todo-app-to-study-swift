@@ -11,6 +11,8 @@ struct TODO {
 }
 
 class TodoDataManager {
+    let STORE_KEY = "TodoDataManager.store_key"
+    
     var todoList: [TODO]
     
     // Computed Property
@@ -27,8 +29,19 @@ class TodoDataManager {
     }
     
     // let data = TodoDataManager() で init() が実行される
+    // NSUserDefaultsからデータを読み出す
+    // NSUserDefaultsはplistという形式を使ってアプリ内にデータを保存する
     init() {
-        self.todoList = []
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let data = defaults.objectForKey(self.STORE_KEY) as? [Srting] {
+            self.todoList = data.map {
+                title in
+                TODO(title: title)
+            }
+        } else {
+            self.todoList = []
+        }
+    }
     }
     
     // TODOが正しい書式であるか判定する
