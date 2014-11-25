@@ -22,6 +22,14 @@ class TodoDataManager {
         return todoList.count
     }
     
+    // シングルトン
+    class var sharedInstance : TodoDataManager {
+        struct Static {
+            static let instance : TodoDataManager = TodoDataManager()
+        }
+        return Static.instance
+    }
+    
     // TodoDataManagerに[]を使ってアクセスされた時の振る舞い
     // subscriptを実装していればどんなクラスや構造体であっても[]による振る舞いを追加することができる
     subscript(index: Int) -> TODO {
