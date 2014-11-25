@@ -48,4 +48,15 @@ class TodoDataManager {
         return false
     }
     
+    // ToDoリストの内容を削除
+    func remove(index: Int) -> Bool {
+        if index >= self.todoList.count {
+            return false
+        }
+        
+        self.todoList.removeAtIndex(index)
+        self.save()
+        
+        return true
+    }
 }
