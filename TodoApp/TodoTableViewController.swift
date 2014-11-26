@@ -14,6 +14,7 @@ class TodoTableViewController : UIViewController {
     // こうすることで初期値としてnilが入るようになる
     var tableView : UITableView?
     
+    // TodoDataManagerのインスタンス（シングルトン）
     var todo = TodoDataManager.sharedInstance
     
     override func viewDidLoad() {
@@ -22,12 +23,22 @@ class TodoTableViewController : UIViewController {
         // ヘッダーImageを生成
         let header = UIImageView(frame: CGRect(x: 0, y: 0, width: 320, height: 64))
         header.image = UIImage(named: "header")
+        // true にすることでheaderにaddSubviewするボタンが正常に動くようにしている
+        header.userInteractionEnabled = true
         
         // タイトルLabelを生成
         let title = UILabel(frame: CGRect(x: 10, y: 20, width: 310, height: 44))
         title.text = "ToDoリスト"
         // ヘッダーにタイトルを追加
         header.addSubview(title)
+
+        // ToDo追加ボタンを生成してヘッダーに追加
+        let button = UIButton.buttonWithType(.System) as UIButton
+        button.frame = CGRect(x: 320 - 50, y: 20, width: 50, height: 44)
+        button.setTitle("追加", forState: .Normal)
+        // タップされた時に呼び出すメソッドを指定
+        button.addTarget(self, action:"showCreateView", forControlEvents: .TouchUpInside)
+        header.addSubview(button)
         
         // 画面の高さを取得してUITableViewのインスタンスを生成
         let screenWidth = UIScreen.mainScreen().bounds.size.height
