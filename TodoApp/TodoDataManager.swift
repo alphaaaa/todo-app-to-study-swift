@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 ai.tashiro. All rights reserved.
 //
 
+import UIKit
+
 struct TODO {
     var title : String
 }
@@ -41,7 +43,7 @@ class TodoDataManager {
     // NSUserDefaultsはplistという形式を使ってアプリ内にデータを保存する
     init() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let data = defaults.objectForKey(self.STORE_KEY) as? [Srting] {
+        if let data = defaults.objectForKey(self.STORE_KEY) as? [String] {
             self.todoList = data.map {
                 title in
                 TODO(title: title)
