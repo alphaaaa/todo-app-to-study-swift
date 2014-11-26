@@ -36,10 +36,13 @@ class TodoTableViewController : UIViewController, UITableViewDataSource {
         self.view.addSubview(self.tableView!)
         self.view.addSubview(header)
     }
-    
+}
+
+
+extension TodoTableViewController : UITableViewDataSource {
     // numberOfRowsInSection で表示するテーブルの行数を返却
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.todo.size
     }
     
     // cellForRowAtIndexPath で表示するセルを生成して返却
@@ -48,5 +51,4 @@ class TodoTableViewController : UIViewController, UITableViewDataSource {
         cell.textLabel.text = "todo"
         return cell
     }
-    
 }
