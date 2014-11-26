@@ -14,6 +14,7 @@
 		5AB33E811A1B2DAE001F958D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AB33E801A1B2DAE001F958D /* Images.xcassets */; };
 		5AB33E841A1B2DAE001F958D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB33E821A1B2DAE001F958D /* LaunchScreen.xib */; };
 		5AB33E901A1B2DAE001F958D /* TodoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB33E8F1A1B2DAE001F958D /* TodoAppTests.swift */; };
+		5AC5189D1A1F04F70005E58A /* TodoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC5189C1A1F04F70005E58A /* TodoDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		5AB33E891A1B2DAE001F958D /* TodoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB33E8E1A1B2DAE001F958D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AB33E8F1A1B2DAE001F958D /* TodoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAppTests.swift; sourceTree = "<group>"; };
+		5AC5189C1A1F04F70005E58A /* TodoDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				5AB33E801A1B2DAE001F958D /* Images.xcassets */,
 				5AB33E821A1B2DAE001F958D /* LaunchScreen.xib */,
 				5AB33E771A1B2DAE001F958D /* Supporting Files */,
+				5AC5189C1A1F04F70005E58A /* TodoDataManager.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				5AB33E7C1A1B2DAE001F958D /* ViewController.swift in Sources */,
 				5A9962901A1DB11F00AEC9DC /* TodoTableViewController.swift in Sources */,
 				5AB33E7A1A1B2DAE001F958D /* AppDelegate.swift in Sources */,
+				5AC5189D1A1F04F70005E58A /* TodoDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
