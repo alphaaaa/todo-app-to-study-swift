@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TodoTableViewController : UIViewController, UITableViewDataSource {
+class TodoTableViewController : UIViewController {
     // tableViewをプロパティとして宣言
     // この時点では初期値を代入できないので型をOptional型にする
     // こうすることで初期値としてnilが入るようになる
     var tableView : UITableView?
+    
+    var todo = TodoDataManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +38,22 @@ class TodoTableViewController : UIViewController, UITableViewDataSource {
         self.view.addSubview(self.tableView!)
         self.view.addSubview(header)
     }
-    
+}
+
+
+extension TodoTableViewController : UITableViewDataSource {
     // numberOfRowsInSection で表示するテーブルの行数を返却
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.todo.size
     }
     
     // cellForRowAtIndexPath で表示するセルを生成して返却
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        
         let cell = UITableViewCell(style: .Default, reuseIdentifier: nil)
-        cell.textLabel.text = "todo"
+        cell.textLabel.text = self.todo[row].title
+        
         return cell
     }
-    
 }
