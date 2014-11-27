@@ -49,6 +49,13 @@ class TodoTableViewController : UIViewController {
         self.view.addSubview(self.tableView!)
         self.view.addSubview(header)
     }
+    
+    // ToDo追加ボタンがタップされたらアラートを表示する
+    func showCreateView() {
+        let alert = UIAlertController(title: "ToDoを追加する", message: nil, preferredStyle: .Alert)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
 
