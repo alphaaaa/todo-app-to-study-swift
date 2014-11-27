@@ -14,8 +14,12 @@ class TodoTableViewController : UIViewController {
     // こうすることで初期値としてnilが入るようになる
     var tableView : UITableView?
     
+    // ToDo追加アラート
+    var alert : UIAlertController?
+    
     // TodoDataManagerのインスタンス（シングルトン）
     var todo = TodoDataManager.sharedInstance
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +56,18 @@ class TodoTableViewController : UIViewController {
     
     // ToDo追加ボタンがタップされたらアラートを表示する
     func showCreateView() {
-        let alert = UIAlertController(title: "ToDoを追加する", message: nil, preferredStyle: .Alert)
+        self.alert = UIAlertController(title: "ToDoを追加する", message: nil, preferredStyle: .Alert)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.alert!.addTextFieldWithConfigurationHandler({
+            textField in textField.delegate = self
+        })
+        
+        self.presentViewController(self.alert!, animated: true, completion: nil)
     }
 }
 
 
-extension TodoTableViewController : UITableViewDataSource {
+extension TodoTableViewController : UITableViewDataSource, UITextFieldDelegate {
     // numberOfRowsInSection で表示するテーブルの行数を返却
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.todo.size
@@ -73,5 +81,17 @@ extension TodoTableViewController : UITableViewDataSource {
         cell.textLabel.text = self.todo[row].title
         
         return cell
+    }
+    
+    // UiTextFiledの入力値をもとに新たなToDoを作成し、登録した後にアラートを閉じる
+    func textFieldShouldEndEditing(textField: UITextField!) -> Bool {
+        let todo = TODO(title: textField.text)
+        if self.todo.create(todo) {
+            textField.text = nil
+            self.tableView!.reloadData()
+        }
+        
+        self.alert!.dismissViewControllerAnimated(false, completion: nil)
+        return true
     }
 }
