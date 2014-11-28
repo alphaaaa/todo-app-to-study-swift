@@ -9,6 +9,7 @@
 import UIKit
 
 class TodoTableViewCell : UITableViewCell {
+    var haveButtonsDisplayd = false
     
     init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,6 +28,20 @@ class TodoTableViewCell : UITableViewCell {
         let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "showDeleteButton")
         swipeRecognizer.direction = .Left
         self.contentView.addGestureRecognizer(swipeRecognizer)
+    }
+    
+    // 削除ボタンの表示
+    func showDeleteButton() {
+        if !haveButtonsDisplayd {
+            UIView.animateWithDuration(0.1, animations: {
+                let size = self.contentView.frame.size
+                let origin = self.contentView.frame.origin
+                
+                self.contentView.frame = CGRect(x: origin.x - 100, y: origin.y, width: size.width, height: size.height)
+            }) {
+                completed in self.haveButtonsDisplayd = true
+            }
+        }
     }
     
 }
