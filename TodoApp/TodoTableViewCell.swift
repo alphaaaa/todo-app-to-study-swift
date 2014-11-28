@@ -50,6 +50,17 @@ class TodoTableViewCell : UITableViewCell {
         updateButton.setTitle("編集", forState: .Normal)
         updateButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         updateButton.addTarget(self, action: "updateTodo", forControlEvents: .TouchUpInside)
+        
+        let removeButton = UIButton.buttonWithType(.System) as UIButton
+        removeButton.frame = CGRect(x: size.width - 50, y: origin.y, width: 50, height: size.height)
+        removeButton.backgroundColor = UIColor.redColor()
+        removeButton.setTitle("削除", forState: .Normal)
+        removeButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        removeButton.addTarget(self, action: "removeTodo", forControlEvents: .TouchUpInside)
+        
+        self.backgroundView = UIView(frame: self.bounds)
+        self.backgroundView?.addSubview(updateButton)
+        self.backgroundView?.addSubview(removeButton)
     }
     
     // 削除ボタンの表示
