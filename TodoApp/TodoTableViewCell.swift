@@ -12,7 +12,11 @@ class TodoTableViewCell : UITableViewCell {
     // 削除ボタンが表示されている状態かを判定する
     var haveButtonsDisplayd = false
     
-    init(style: UITableViewCellStyle, reuseIdentifier: String!) {
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         // タップされた時は何もしない
