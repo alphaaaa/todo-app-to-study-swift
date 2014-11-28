@@ -21,8 +21,8 @@ class TodoTableViewCell : UITableViewCell {
         
         // タップされた時は何もしない
         self.selectionStyle = .None
-        // 背景を白にする
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        
+        self.createView()
         
         // GestureRecognizerの生成と登録
         // 右方向へのスワイプを認識し、スワイプが行われると hideDeleteButton が実行される
@@ -33,6 +33,23 @@ class TodoTableViewCell : UITableViewCell {
         let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "showDeleteButton")
         swipeRecognizer.direction = .Left
         self.contentView.addGestureRecognizer(swipeRecognizer)
+    }
+    
+    // 描画に関する処理
+    func createView() {
+        let origin = self.frame.origin
+        let size = self.frame.size
+        
+        // 背景を白にする
+        self.contentView.backgroundColor = UIColor.whiteColor()
+        
+        // 編集ボタンを追加
+        let updateButton = UIButton.buttonWithType(.System) as UIButton
+        updateButton.frame = CGRect(x: size.width - 100, y: origin.y, width: 50, height: size.height)
+        updateButton.backgroundColor = UIColor.lightGrayColor()
+        updateButton.setTitle("編集", forState: .Normal)
+        updateButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        updateButton.addTarget(self, action: "updateTodo", forControlEvents: .TouchUpInside)
     }
     
     // 削除ボタンの表示
